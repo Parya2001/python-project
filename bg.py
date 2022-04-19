@@ -31,3 +31,28 @@ for i in b:
         print(data_str)
         p = p+1
     y=y+1
+    
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+cred = credentials.Certificate("krishna.json")
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+
+doc_ref = db.collection(u'Bhagavadgita As it is').document(u'chapter 1.1')
+doc_ref = db.document(u"धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सव: ।मामका: पाण्डवाश्चैव किमकुर्वत सञ्जय ॥ १ ॥")
+#doc_ref.set({u"dhṛtarāṣṭra uvāca dharma-kṣetre kuru-kṣetre samavetā yuyutsavaḥ māmakāḥ pāṇḍavāś caiva kim akurvata sañjaya"})
+doc_ref.set({    
+    u'dhṛtarāṣṭraḥ uvāca':u'King Dhṛtarāṣṭra said', 
+    u'dharma-kṣetre':u'in the place of pilgrimage;',
+    u'kuru-kṣetre —':u'in the place named Kurukṣetra;',
+    u'samavetāḥ —':u'assembled;',
+    u'yuyutsavaḥ —':u'desiring to fight;',
+    u'māmakāḥ —':u'my party (sons);',
+    u'pāṇḍavāḥ —':u'the sons of Pāṇḍu;',
+    u'ca —':u'and;',
+    u'eva —':u'certainly;',
+    u'kim —':u'what;',
+    u'akurvata —':u'did they do;',
+    #u'sañjaya —': OSañjaya
